@@ -3,6 +3,7 @@ const downloadBtn = document.querySelector('.js-btn-download');
 const removeBtn = document.querySelector('.js-btn-remove');
 const replaceBtn = document.querySelector('.js-btn-replace');
 const previewImage = document.getElementById('previewImage');
+const fileInput = document.getElementById('fileInput');
 
 const brightness = document.getElementById('brightness');
 const contrast = document.getElementById('contrast');
@@ -13,6 +14,8 @@ const brightnessVal = document.querySelector('.js-brightness-amount');
 const contrastVal = document.querySelector('.js-contrast-amount');
 const blurVal = document.querySelector('.js-blur-amount');
 const grayscaleVal = document.querySelector('.js-grayscale-amount');
+
+
 
 brightness.addEventListener('change', () => {
   previewImage.style.filter = `brightness(${brightness.value}%)`;
@@ -33,3 +36,27 @@ grayscale.addEventListener('change', () => {
   previewImage.style.filter = `grayscale(${grayscale.value}%)`;
   grayscaleVal.textContent = grayscale.value;
 })
+
+resetBtn.addEventListener('click', () => {
+  brightness.value = 100;
+  contrast.value = 100;
+  blur.value = 0;
+  grayscale.value = 0;
+
+  previewImage.style.filter = `brightness(${brightness.value}%)`;
+  brightnessVal.textContent = brightness.value;
+  previewImage.style.filter = `contrast(${contrast.value}%)`;
+  contrastVal.textContent = contrast.value;
+  previewImage.style.filter =  `blur(${blur.value}px)`;
+  blurVal.textContent = blur.value;
+  previewImage.style.filter = `grayscale(${grayscale.value}%)`;
+  grayscaleVal.textContent = grayscale.value;
+});
+
+replaceBtn.addEventListener('click', () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', () => {
+  previewImage.src = URL.createObjectURL(fileInput.files[0]);
+});
