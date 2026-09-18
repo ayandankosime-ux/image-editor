@@ -24,17 +24,17 @@
           canvas
         </p>
         <div class="upload-box">
-          <div class="uploaded-box">
+          <div class="uploaded-box js-uploaded-box not-visible">
+            <img src="images/accept-check-good-mark-ok-tick-svgrepo-com.svg" class="done-icon">
             <p>Uploaded</p>
           </div>
           <input type="file" id="fileInput" hidden>
-          <img id="previewImage" class="uploaded-image" src="images/⌗.jpeg">
+          <img id="previewImage" class="uploaded-image" src="">
+          <button class="btn3 btn-upload-image js-btn-upload-image">Upload Image</button>
         </div>
 
-        <div class="notification-container">
-          <p class="notification-text">
-            uploaded-photo.jpg - 1920x1260 - 1.2 MB
-          </p>
+        <div class="notification-container js-notification-container">
+          <p class="notification-text js-notification-text"></p>
           <div class="button-container">
             <button 
               class="btn btn-replace 
