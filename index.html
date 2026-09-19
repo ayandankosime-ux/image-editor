@@ -12,9 +12,9 @@
   <header>
     <div class="logo-container">
       <img class="logo-image" src="images/587438345192379763.jpeg">
-      <h1>CapCut Lite</h1>
+      <h1>Mini Editor</h1>
     </div>
-    <p>React - Image Editor</p>
+    <p>JavaScript - Image Editor</p>
   </header>
 
   <main>
@@ -50,33 +50,36 @@
       </div>
 
       <div class="image-editor-container">
-        <h2>Adjustments</h2>
+        <div class="adjustment-controls">
+            <h2>Adjustments</h2>
 
-        <div class="adjustment-controls-container">
-          <h3>Brightness</h3>
-          <input type="range" id="brightness" min="0" max="200" value="100">
-          <div class="brightness-amount amount">
-            <p class="amount-text js-brightness-amount">100</p>
-          </div>
+          <div class="adjustment-controls-container">
+            <h3>Brightness</h3>
+            <input type="range" id="brightness" min="0" max="200" value="100">
+            <div class="brightness-amount amount">
+              <p class="amount-text js-brightness-amount">100</p>
+            </div>
 
-          <h3>Contrast</h3>
-          <input type="range" id="contrast" min="0" max="200" value="100">
-          <div class="contrast-amount amount">
-            <p class="amount-text js-contrast-amount">100</p>
-          </div>
+            <h3>Contrast</h3>
+            <input type="range" id="contrast" min="0" max="200" value="100">
+            <div class="contrast-amount amount">
+              <p class="amount-text js-contrast-amount">100</p>
+            </div>
 
-          <h3>Blur</h3>
-          <input type="range" id="blur" min="0" max="10" value="0">
-          <div class="blur-amount amount">
-            <p class="amount-text js-blur-amount">0</p>
-          </div>
+            <h3>Blur</h3>
+            <input type="range" id="blur" min="0" max="10" value="0">
+            <div class="blur-amount amount">
+              <p class="amount-text js-blur-amount">0</p>
+            </div>
 
-          <h3>Grayscale</h3>
-          <input type="range" id="grayscale" min="0" max="100" value="0">
-          <div class="grayscale-amount amount">
-            <p class="amount-text js-grayscale-amount">0</p>
+            <h3>Grayscale</h3>
+            <input type="range" id="grayscale" min="0" max="100" value="0">
+            <div class="grayscale-amount amount">
+              <p class="amount-text js-grayscale-amount">0</p>
+            </div>
           </div>
         </div>
+        
         <div class="download-reset-container">
           <button class="btn3 btn-reset js-btn-reset">Reset</button>
           <button class="btn3 btn-download js-btn-download">Download</button>
@@ -85,8 +88,7 @@
     </div>
   </main>
 
-  <script src="scripts/data.js"></script>
-  <script src="scripts/adjustments.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

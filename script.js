@@ -18,37 +18,50 @@ const contrastVal = document.querySelector('.js-contrast-amount');
 const blurVal = document.querySelector('.js-blur-amount');
 const grayscaleVal = document.querySelector('.js-grayscale-amount');
 
+brightness.value = 100;
+contrast.value = 100;
+blur.value = 0;
+grayscale.value = 0;
+
 brightness.addEventListener('change', () => {
-  imageAdjustments(brightness, brightnessVal);
+  applyFilter();
 });
 
 contrast.addEventListener('change', () => {
-  imageAdjustments(contrast, contrastVal);
+  applyFilter();
 });
 
 blur.addEventListener('change', () => {
-  imageAdjustments( blur, blurVal);
+  applyFilter();
 });
 
 grayscale.addEventListener('change', () => {
-  imageAdjustments(grayscale, grayscaleVal);
-})
+  applyFilter()}
+);
 
-resetBtn.addEventListener('click', () => {
+function applyFilter() {
+  previewImage.style.filter = `brightness(${brightness.value}%) contrast(${contrast.value}%) blur(${blur.value}px) grayscale(${grayscale.value}%)`
+
+
+  filterValues();
+}
+
+function resetFilter() {
   brightness.value = 100;
   contrast.value = 100;
   blur.value = 0;
   grayscale.value = 0;
 
-  previewImage.style.filter = `brightness(${brightness.value}%)`;
+  filterValues();
+  applyFilter();
+}
+
+function filterValues() {
   brightnessVal.textContent = brightness.value;
-  previewImage.style.filter = `contrast(${contrast.value}%)`;
   contrastVal.textContent = contrast.value;
-  previewImage.style.filter =  `blur(${blur.value}px)`;
   blurVal.textContent = blur.value;
-  previewImage.style.filter = `grayscale(${grayscale.value}%)`;
   grayscaleVal.textContent = grayscale.value;
-});
+}
 
 uploadBtn.addEventListener('click', () => {
   fileInput.click();
@@ -66,13 +79,14 @@ fileInput.addEventListener('change', () => {
 
   const num = fileInput.files[0].size / (1024 * 1024);
   notificationText.innerHTML = `uploaded-${fileInput.files[0].name} - ${num.toFixed(2)} MB`;
+
+  resetFilter();
 });
 
 removeBtn.addEventListener('click', () => {
   previewImage.src = '';
   fileInput.value = '';
   uploadBtn.classList.remove('not-visible');
-  buttonContainer.classList.remove('.button-container');
 
 });
 
@@ -81,21 +95,27 @@ replaceBtn.addEventListener('click', () => {
 });
 
 
-function imageAdjustments(adjustmentInput, adjustmentInputVal ) {
-  if (adjustmentInput === brightness) {
-    previewImage.style.filter = `brightness(${adjustmentInput.value}%)`;
-    adjustmentInputVal.textContent = adjustmentInput.value;
 
-  } else if (adjustmentInput === contrast) {
-    previewImage.style.filter = `contrast(${adjustmentInput.value}%)`;
-    adjustmentInputVal.textContent = adjustmentInput.value;
 
-  } else if (adjustmentInput === blur) {
-    previewImage.style.filter = `blur(${adjustmentInput.value}px)`;
-    adjustmentInputVal.textContent = adjustmentInput.value;
+downloadBtn.addEventListener('click', () => {
+  if (!previewImage.src) return alert('No image to download!');
 
-  } else if (adjustmentInput === grayscale) {
-    previewImage.style.filter = `grayscale(${adjustmentInput.value}%)`;
-    adjustmentInputVal.textContent = adjustmentInput.value;
-  }
-}
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = previewImage.naturalWidth;
+  canvas.height = previewImage.naturalHeight;
+
+  ctx.filter = previewImage.style.filter;
+  ctx.drawImage(previewImage, 0, 0);
+
+  const link = document.createElement('a');
+  link.download = `edited-image.jpeg`;
+  link.href = canvas.toDataURL('image/jpeg');
+  link.click();
+});
+
+resetBtn.addEventListener('click', () => {
+  resetFilter();
+});
+

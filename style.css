@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   color: white;
   background-color: rgb(49, 49, 49);
+  font-size: small;
 }
 
 p {
@@ -20,6 +21,7 @@ header {
   margin-bottom: 10px;
 }
 
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -32,6 +34,8 @@ header {
   border-radius: 10px;
 }
 
+
+
 .image-upload-container {
   border: 1px solid rgb(44, 31, 119);
   border-radius: 12px;
@@ -41,6 +45,8 @@ header {
   color: rgb(168, 168, 168);
   padding: 15px;
 }
+
+
 
 .upload-box {
   display: flex;
@@ -53,7 +59,7 @@ header {
   flex-direction: column;
   align-items: center;
   margin-top: 6px;
-  height: 450px;
+  height: 400px;
 }
 
 .uploaded-box {
@@ -101,7 +107,7 @@ header {
 }
 
 .notification-text {
-  max-width: 350px;
+  max-width: 300px;
 }
 
 .btn {
@@ -113,6 +119,7 @@ header {
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: background-color 0.15s padding 0.15s;
+  font-size: small;
 }
 
 .btn:hover {
@@ -133,6 +140,13 @@ header {
   color: white;
   padding: 15px;
   margin-top: 8px;
+  
+}
+
+.download-reset-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn2 {
@@ -141,7 +155,7 @@ header {
   border-radius: 10px;
   padding: 8px 12px;
   background-color: rgb(73, 73, 73);
-  font-size: 18px;
+  font-size: 10px;
   margin-right: 4px;
   color: white;
 }
@@ -170,7 +184,7 @@ h3 {
   width: 150px;
   height: 45px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   border-radius: 8px;
   background-color: rgb(31, 31, 31);
   color: white;
@@ -183,4 +197,22 @@ h3 {
   background-color: rgb(63, 43, 175);
   border: none;
   box-shadow: inset -40px 0px 50px rgba(182, 182, 182, 0.2);
+}
+
+@media (min-width: 800px) {
+
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    column-gap: 12px;
+  }
+
+  .uploaded-image {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .notification-text {
+    max-width: 600px;
+  }
 }
